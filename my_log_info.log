@@ -1,0 +1,5 @@
+[Sun, 17 Oct 2021 16:55:02] INFO [_internal.py._log:113]  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+[Sun, 17 Oct 2021 16:55:16] DEBUG [app.py.about:68] Sun Oct 17 16:55:16 2021, The "About Us" page is retrieved.
+[Sun, 17 Oct 2021 16:55:16] INFO [_internal.py._log:113] 127.0.0.1 - - [17/Oct/2021 16:55:16] "[37mGET /about HTTP/1.1[0m" 200 -
+[Sun, 17 Oct 2021 16:55:21] INFO [_internal.py._log:113] 127.0.0.1 - - [17/Oct/2021 16:55:21] "[37mGET / HTTP/1.1[0m" 200 -
+[Sun, 17 Oct 2021 16:55:27] INFO [_internal.py._log:113] 127.0.0.1 - - [17/Oct/2021 16:55:27] "[37mGET / HTTP/1.1[0m" 200 -

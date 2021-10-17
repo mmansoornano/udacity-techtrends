@@ -1,0 +1,32 @@
+INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+[Sun, 17 Oct 2021 17:00:54] INFO [_internal.py._log:113]  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+ * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2021 17:01:37] "[37mGET / HTTP/1.1[0m" 200 -
+127.0.0.1 - - [17/Oct/2021 17:02:15] "[33mGET /info HTTP/1.1[0m" 404 -
+Sun Oct 17 17:02:22 2021, The "About Us" page is retrieved.
+127.0.0.1 - - [17/Oct/2021 17:02:22] "[37mGET /about HTTP/1.1[0m" 200 -
+ * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+Sun Oct 17 17:03:12 2021, The "About Us" page is retrieved.
+127.0.0.1 - - [17/Oct/2021 17:03:12] "[37mGET /about HTTP/1.1[0m" 200 -
+ * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+Sun Oct 17 17:05:06 2021, The "About Us" page is retrieved.
+127.0.0.1 - - [17/Oct/2021 17:05:06] "[37mGET /about HTTP/1.1[0m" 200 -
+[Sun, 17 Oct 2021 17:06:19] INFO [_internal.py._log:113]  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+[Sun, 17 Oct 2021 17:07:08] INFO [app.py.about:68] Sun Oct 17 17:07:08 2021, The "About Us" page is retrieved.
+[Sun, 17 Oct 2021 17:07:08] INFO [_internal.py._log:113] 127.0.0.1 - - [17/Oct/2021 17:07:08] "[37mGET /about HTTP/1.1[0m" 200 -
+INFO:werkzeug: [Sun, 17 Oct 2021 17:08:13] [_internal.py._log:113]  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:werkzeug: [Sun, 17 Oct 2021 17:08:15] [app.py.about:68] Sun Oct 17 17:08:15 2021, The "About Us" page is retrieved.
+INFO:werkzeug: [Sun, 17 Oct 2021 17:08:15] [_internal.py._log:113] 127.0.0.1 - - [17/Oct/2021 17:08:15] "[37mGET /about HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:Sun Oct 17 17:09:23 2021, The "About Us" page is retrieved.
+INFO:werkzeug:127.0.0.1 - - [17/Oct/2021 17:09:23] "[37mGET /about HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:app:Sun Oct 17 17:16:25 2021, The "About Us" page is retrieved.
+INFO:werkzeug:127.0.0.1 - - [17/Oct/2021 17:16:25] "[37mGET /about HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:app:10/17/2021, hh:mm:ss, The "About Us" page is retrieved.
+INFO:werkzeug:127.0.0.1 - - [17/Oct/2021 17:21:32] "[37mGET /about HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:app:10/17/2021, 17:22:37, The "About Us" page is retrieved.
+INFO:werkzeug:127.0.0.1 - - [17/Oct/2021 17:22:37] "[37mGET /about HTTP/1.1[0m" 200 -

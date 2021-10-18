@@ -202,3 +202,12 @@ INFO:app:10/18/2021, 13:40:47, unhealthy
 INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:40:47] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
 INFO:app:10/18/2021, 13:40:50, unhealthy
 INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:40:50] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:app:10/18/2021, 13:41:08, Healthy
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:41:08] "[37mGET /healthz HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 13:41:12, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:41:12] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 13:41:22, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:41:22] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 13:41:24, unhealthy
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:41:24] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -

@@ -43,6 +43,15 @@ def get_post(post_id):
     connection.close()
     return post
 
+# dynamic response
+def respond(status=200,result="OK - healthy"):
+    response = app.response_class(
+                    response = json.dumps({"result":result}),
+                    status=status,
+                    mimetype='application/json'
+            )
+    return response
+
 # Define the Flask application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'seven monkeys on ropes'
@@ -95,13 +104,26 @@ def create():
 
 @app.route('/healthz')
 def health():
-    response = app.response_class(
-        response=json.dumps({"result":"OK - healthy"}),
-        status=200,
-        mimetype='application/json'
-    )
-    app.logger.info(f'{time.strftime("%m/%d/%Y, %H:%M:%S", time.localtime())}, Healthy')
-    return response
+    try:
+        connection = get_db_connection()
+        posts=connection.execute('SELECT count(id) FROM posts').fetchall()[0][0]
+        print(posts)
+        connection.close()
+        if int(posts)>0:
+            response = respond(status=200,result="OK - healthy")
+            app.logger.info(f'{time.strftime("%m/%d/%Y, %H:%M:%S", time.localtime())}, Healthy')
+            return response
+        else:
+            response = respond(status=500,result="ERROR - unhealthy")
+            app.logger.info(f'{time.strftime("%m/%d/%Y, %H:%M:%S", time.localtime())}, unhealthy')
+            return response
+
+    except:
+        response = respond(status=500,result="ERROR - unhealthy")
+        app.logger.info(f'{time.strftime("%m/%d/%Y, %H:%M:%S", time.localtime())}, unhealthy')
+        return response
+    
+    
 
 @app.route('/metrics')
 def metrics():

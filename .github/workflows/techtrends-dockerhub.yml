@@ -26,7 +26,7 @@ jobs:
           #   {{raw}}
          # generate Docker tags based on the following events/attributes
           tags: |
-            type=raw,value=1.0.${{ github.run_number }},priority=1000
+            type=raw,value=v1.0.${{ github.run_number }},priority=1000
             type=ref,event=branch
             type=sha
             type=raw,value=latest

@@ -6,7 +6,7 @@ service:
   protocol: TCP
   type: ClusterIP
 image:
-  repository: mmansoornano/techtrends
+  repository: mmansoornano/udacity-techtrends
   tag: latest
   pullPolicy: Always
 replicaCount: 5

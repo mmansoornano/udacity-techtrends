@@ -62,3 +62,8 @@ INFO:app:10/18/2021, 01:33:15, Accesing metrics
 INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:33:15] "[37mGET /metrics HTTP/1.1[0m" 200 -
 INFO:app:10/18/2021, 01:33:16, Accesing metrics
 INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:33:16] "[37mGET /metrics HTTP/1.1[0m" 200 -
+WARNING:app:2021-10-19 00:45:35,467, Unhealthy
+WARNING:app:2021-10-19 00:45:35,614, Unhealthy
+WARNING:app:2021-10-19 00:47:40,644, Unhealthy
+WARNING:app:2021-10-19 00:52:31,469, Unhealthy
+INFO:app:2021-10-19 00:54:05,808, Accesing metrics

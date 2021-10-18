@@ -1,37 +1,63 @@
 import sqlite3
+from sqlite3.dbapi2 import DatabaseError, OperationalError
 import time
-from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
+from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash, logging 
 from werkzeug.exceptions import abort
-import sys
+import sys, os
 import logging
 
-logger = logging.getLogger('')
-logger.setLevel(logging.DEBUG)
-fh = logging.FileHandler('app.log')
-sh = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter('%(levelname)s:%(name)s:%(message)s', datefmt='%a, %d %b %Y %H:%M:%S')
-fh.setFormatter(formatter)
-sh.setFormatter(formatter)
-logger.addHandler(fh)
-logger.addHandler(sh)
-conn_counter = 0
+def initialize_logger():
+    
+    log_level = os.getenv("LOGLEVEL", "DEBUG").upper()
+    log_level = (
+        getattr(logging, log_level)
+        if log_level in ["CRITICAL", "DEBUG", "ERROR", "INFO", "WARNING",]
+        else logging.DEBUG
+    )
+
+    # logger = logging.getLogger(__name__)
+    format='%(levelname)s:%(name)s:%(asctime)s, %(message)s'
+    formatter = logging.Formatter(format)
+    app.logger.setLevel(log_level)
+    fh = logging.FileHandler('app.log')
+    sh = logging.StreamHandler()
+
+    fh.setLevel(log_level)
+    sh.setLevel(log_level)
+    
+    fh.setFormatter(formatter)
+    sh.setFormatter(formatter)
+
+    app.logger.addHandler(fh)
+    app.logger.addHandler(sh)
+
+    # logging.basicConfig(stream=sys.stdout,filename='app.log',
+    #     format='%(levelname)s:%(name)s:%(asctime)s, %(message)s',
+    #             level=log_level,
+    # )
+    
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
-    global conn_counter
     connection = sqlite3.connect('database.db')
-    connection.execute('''
-    CREATE TABLE IF NOT EXISTS posts (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        title TEXT NOT NULL,
-        content TEXT NOT NULL
-    );''')
-    connection.row_factory = sqlite3.Row
-    conn_counter += 1
-    app.config['DB_CONN_COUNTER'] +=1
-    return connection
+    try:
+        connection.execute('SELECT * FROM posts').fetchall()
+        return connection
+    except OperationalError:
+        app.logger.critical("Post table not found.")
+    finally:
+        connection.execute('''
+        CREATE TABLE IF NOT EXISTS posts (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            title TEXT NOT NULL,
+            content TEXT NOT NULL
+        );''')
+        connection.row_factory = sqlite3.Row
+        app.config['DB_CONN_COUNTER'] +=1
+        app.logger.info("Post table created.")
+        return connection
 
 # Function to get a post using its ID
 def get_post(post_id):
@@ -39,7 +65,7 @@ def get_post(post_id):
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
     if post is not None:
-        app.logger.debug(f'{time.strftime("%m/%d/%Y, %H:%M:%S", time.localtime())}, Article "{post[2]}" is retrived!')
+        app.logger.info(' Article "{post[2]}" is retrived!')
     connection.close()
     return post
 
@@ -70,7 +96,7 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-        app.logger.debug(f'{time.strftime("%m/%d/%Y, %H:%M:%S", time.localtime())}, A non-existing article is accessed, 404')
+        app.logger.warning('A non-existing article is accessed, 404')
         return render_template('404.html'), 404
     else:
       return render_template('post.html', post=post)
@@ -78,7 +104,7 @@ def post(post_id):
 # Define the About Us page
 @app.route('/about')
 def about():
-    app.logger.info(f'{time.strftime("%m/%d/%Y, %H:%M:%S", time.localtime())}, The "About Us" page is retrieved.')
+    app.logger.info('The "About Us" page is retrieved.')
     return render_template('about.html')
 
 # Define the post creation functionality 
@@ -95,7 +121,7 @@ def create():
             connection.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
                          (title, content))
             connection.commit()
-            app.logger.info(f'{time.strftime("%m/%d/%Y, %H:%M:%S", time.localtime())}, A new article "{title}" is created.')
+            app.logger.info(' A new article "{title}" is created.')
             connection.close()
 
             return redirect(url_for('index'))
@@ -111,16 +137,16 @@ def health():
         connection.close()
         if int(posts)>0:
             response = respond(status=200,result="OK - healthy")
-            app.logger.info(f'{time.strftime("%m/%d/%Y, %H:%M:%S", time.localtime())}, Healthy')
+            app.logger.info('Healthy')
             return response
         else:
             response = respond(status=500,result="ERROR - unhealthy")
-            app.logger.info(f'{time.strftime("%m/%d/%Y, %H:%M:%S", time.localtime())}, unhealthy')
+            app.logger.warning('Unhealthy')
             return response
 
     except:
         response = respond(status=500,result="ERROR - unhealthy")
-        app.logger.info(f'{time.strftime("%m/%d/%Y, %H:%M:%S", time.localtime())}, unhealthy')
+        app.logger.warning('Unhealthy')
         return response
     
     
@@ -135,11 +161,12 @@ def metrics():
             status=200,
             mimetype='application/json'
     )
-    app.logger.info(f'{time.strftime("%m/%d/%Y, %H:%M:%S", time.localtime())}, Accesing metrics')
+    app.logger.info('Accesing metrics')
     return response
 
 # start the application on port 3111
 if __name__ == "__main__":
-
-    logging.basicConfig(stream=sys.stdout,filename='app.log',level=logging.DEBUG)
+    initialize_logger()
+    
+    # logging.basicConfig(stream=sys.stdout,filename='app.log',level=logging.DEBUG)
     app.run(host='0.0.0.0',port='3111')

@@ -1,21 +1,4 @@
-INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-INFO:app:10/18/2021, 13:29:48, Accesing metrics
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:29:48] "[37mGET /metrics HTTP/1.1[0m" 200 -
-ERROR:app:Exception on /healthz [GET]
-Traceback (most recent call last):
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 112, in health
-    if len(post)>0:
-TypeError: object of type 'function' has no len()
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 121, in health
-    response = response(status=500,result="ERROR - unhealthy")
-UnboundLocalError: local variable 'response' referenced before assignment
-
-During handling of the above exception, another exception occurred:
-
+ERROR:app:2021-10-19 00:54:43,149, Exception on /metrics [GET]
 Traceback (most recent call last):
   File "C:\Users\home\anaconda3\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -29,25 +12,13 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\home\anaconda3\lib\site-packages\flask\app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 125, in health
-    response = response(status=500,result="ERROR - unhealthy")
-UnboundLocalError: local variable 'response' referenced before assignment
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:29:54] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
-ERROR:app:Exception on /healthz [GET]
-Traceback (most recent call last):
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 112, in health
-    if len(post)>0:
-TypeError: object of type 'function' has no len()
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 121, in health
-    response = response(status=500,result="ERROR - unhealthy")
-UnboundLocalError: local variable 'response' referenced before assignment
-
-During handling of the above exception, another exception occurred:
-
+  File ".\app.py", line 154, in metrics
+    connection = get_db_connection()
+  File ".\app.py", line 45, in get_db_connection
+    connection.execute('SELECT * FROM posts').fetchall()
+sqlite3.OperationalError: no such table: posts
+WARNING:app:2021-10-19 00:54:45,697, Unhealthy
+ERROR:app:2021-10-19 00:54:47,015, Exception on /metrics [GET]
 Traceback (most recent call last):
   File "C:\Users\home\anaconda3\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -61,27 +32,13 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\home\anaconda3\lib\site-packages\flask\app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 125, in health
-    response = response(status=500,result="ERROR - unhealthy")
-UnboundLocalError: local variable 'response' referenced before assignment
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:30:14] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:30:19] "[37mGET / HTTP/1.1[0m" 200 -
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:30:19] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
-ERROR:app:Exception on /healthz [GET]
-Traceback (most recent call last):
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 112, in health
-    if len(post)>0:
-TypeError: object of type 'function' has no len()
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 121, in health
-    response = response(status=500,result="ERROR - unhealthy")
-UnboundLocalError: local variable 'response' referenced before assignment
-
-During handling of the above exception, another exception occurred:
-
+  File ".\app.py", line 154, in metrics
+    connection = get_db_connection()
+  File ".\app.py", line 45, in get_db_connection
+    connection.execute('SELECT * FROM posts').fetchall()
+sqlite3.OperationalError: no such table: posts
+CRITICAL:app:2021-10-19 00:55:28,087, Database not found.
+ERROR:app:2021-10-19 00:55:28,088, Exception on /metrics [GET]
 Traceback (most recent call last):
   File "C:\Users\home\anaconda3\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -95,26 +52,11 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\home\anaconda3\lib\site-packages\flask\app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 125, in health
-    response = response(status=500,result="ERROR - unhealthy")
-UnboundLocalError: local variable 'response' referenced before assignment
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:30:31] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
-INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-ERROR:app:Exception on /healthz [GET]
-Traceback (most recent call last):
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 112, in health
-    if len(post)>0:
-TypeError: object of type 'function' has no len()
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 121, in health
-    response = response(status=500,result="ERROR - unhealthy")
-UnboundLocalError: local variable 'response' referenced before assignment
-
-During handling of the above exception, another exception occurred:
-
+  File ".\app.py", line 155, in metrics
+    posts=connection.execute('SELECT count(id) FROM posts').fetchall()[0][0]
+AttributeError: 'NoneType' object has no attribute 'execute'
+CRITICAL:app:2021-10-19 00:56:35,208, Database not found.
+ERROR:app:2021-10-19 00:56:35,209, Exception on /metrics [GET]
 Traceback (most recent call last):
   File "C:\Users\home\anaconda3\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -128,26 +70,11 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\home\anaconda3\lib\site-packages\flask\app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 125, in health
-    response = response(status=500,result="ERROR - unhealthy")
-UnboundLocalError: local variable 'response' referenced before assignment
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:31:25] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
-INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-ERROR:app:Exception on /healthz [GET]
-Traceback (most recent call last):
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 114, in health
-    if len(post)>0:
-TypeError: object of type 'function' has no len()
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 123, in health
-    response = response(status=500,result="ERROR - unhealthy")
-UnboundLocalError: local variable 'response' referenced before assignment
-
-During handling of the above exception, another exception occurred:
-
+  File ".\app.py", line 156, in metrics
+    posts=connection.execute('SELECT count(id) FROM posts').fetchall()[0][0]
+AttributeError: 'NoneType' object has no attribute 'execute'
+CRITICAL:app:2021-10-19 00:57:26,662, Post table not found.
+ERROR:app:2021-10-19 00:57:26,664, Exception on /metrics [GET]
 Traceback (most recent call last):
   File "C:\Users\home\anaconda3\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -161,53 +88,11 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\home\anaconda3\lib\site-packages\flask\app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "d:\Data Science\Courses\Udacity\Cloud Native\Project 1\nd064_course_1-main\project\techtrends\app.py", line 128, in health
-    response = response(status=500,result="ERROR - unhealthy")
-UnboundLocalError: local variable 'response' referenced before assignment
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:32:37] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
-INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-INFO:app:10/18/2021, 13:33:36, unhealthy
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:33:36] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
-INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-INFO:app:10/18/2021, 13:33:59, unhealthy
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:33:59] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
-INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-INFO:app:10/18/2021, 13:36:38, Healthy
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:36:38] "[37mGET /healthz HTTP/1.1[0m" 200 -
-INFO:app:10/18/2021, 13:37:09, Accesing metrics
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:37:09] "[37mGET /metrics HTTP/1.1[0m" 200 -
-INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-INFO:app:10/18/2021, 13:38:17, Healthy
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:38:17] "[37mGET /healthz HTTP/1.1[0m" 200 -
-INFO:app:10/18/2021, 13:38:42, Accesing metrics
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:38:42] "[37mGET /metrics HTTP/1.1[0m" 200 -
-INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-INFO:app:10/18/2021, 13:39:51, Accesing metrics
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:39:51] "[37mGET /metrics HTTP/1.1[0m" 200 -
-INFO:app:10/18/2021, 13:39:53, unhealthy
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:39:53] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:40:01] "[37mGET /create HTTP/1.1[0m" 200 -
-INFO:app:10/18/2021, 13:40:05, A new article "aa" is created.
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:40:05] "[32mPOST /create HTTP/1.1[0m" 302 -
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:40:05] "[37mGET / HTTP/1.1[0m" 200 -
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:40:07] "[37mGET /create HTTP/1.1[0m" 200 -
-INFO:app:10/18/2021, 13:40:09, unhealthy
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:40:09] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
-INFO:app:10/18/2021, 13:40:16, Accesing metrics
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:40:16] "[37mGET /metrics HTTP/1.1[0m" 200 -
-INFO:app:10/18/2021, 13:40:19, unhealthy
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:40:19] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
-INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-INFO:app:10/18/2021, 13:40:47, unhealthy
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:40:47] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
-INFO:app:10/18/2021, 13:40:50, unhealthy
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:40:50] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
-INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-INFO:app:10/18/2021, 13:41:08, Healthy
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:41:08] "[37mGET /healthz HTTP/1.1[0m" 200 -
-INFO:app:10/18/2021, 13:41:12, Accesing metrics
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:41:12] "[37mGET /metrics HTTP/1.1[0m" 200 -
-INFO:app:10/18/2021, 13:41:22, Accesing metrics
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:41:22] "[37mGET /metrics HTTP/1.1[0m" 200 -
-INFO:app:10/18/2021, 13:41:24, unhealthy
-INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 13:41:24] "[35m[1mGET /healthz HTTP/1.1[0m" 500 -
+  File ".\app.py", line 157, in metrics
+    posts=connection.execute('SELECT count(id) FROM posts').fetchall()[0][0]
+AttributeError: 'NoneType' object has no attribute 'execute'
+CRITICAL:app:2021-10-19 00:58:31,094, Post table not found.
+INFO:app:2021-10-19 00:58:31,235, Post table created.
+INFO:app:2021-10-19 00:58:31,237, Accesing metrics
+INFO:app:2021-10-19 00:58:49,572, Post table created.
+WARNING:app:2021-10-19 00:58:49,574, Unhealthy

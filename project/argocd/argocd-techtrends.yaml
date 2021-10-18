@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: techtrends
+  namespace: argocd
+spec:
+  destination:
+    namespace: techtrends
+    server: https://kubenetes.default.svc
+  project: techtrends
+  source:
+    helm:
+      valueFiles:
+      - values.yaml
+    path: project/helm
+    repourl: https://github.com/mmansoornano/udacity-techtrends
+    targetRevision: HEAD
+  syncPolicy: {}

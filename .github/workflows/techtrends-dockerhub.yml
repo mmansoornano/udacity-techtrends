@@ -12,18 +12,18 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v2
-      -
-        name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          # list of Docker images to use as base name for tags
-          images: |
-            mmansoornano/udacity-techtrends
-            ghcr.io/mmansoornano/udacity-techtrends
-          tag-custom: latest
-          tag-semver: |
-            {{raw}}
+      # -
+      #   name: Docker meta
+      #   id: meta
+      #   uses: docker/metadata-action@v3
+      #   with:
+      #     # list of Docker images to use as base name for tags
+      #     images: |
+      #       mmansoornano/udacity-techtrends
+      #       ghcr.io/mmansoornano/udacity-techtrends
+      #     tag-custom: latest
+      #     tag-semver: |
+      #       {{raw}}
           # generate Docker tags based on the following events/attributes
           # tags: |
           #   type=schedule
@@ -54,6 +54,6 @@ jobs:
           file: ./project/techtrends/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          #tags: mmansoornano/udacity-techtrends:latest
+          tags: mmansoornano/udacity-techtrends:latest
+          # tags: ${{ steps.meta.outputs.tags }}
+          # labels: ${{ steps.meta.outputs.labels }}

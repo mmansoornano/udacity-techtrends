@@ -62,12 +62,24 @@ jobs:
           file: ./project/techtrends/Dockerfile
           platforms: linux/amd64
           push: true
-          # tags: mmansoornano/udacity-techtrends:latest
+          builder: ${{ steps.buildx.outputs.name }}
+          labels: |
+            org.opencontainers.image.authors=${{ github.repository_owner }}
+            org.opencontainers.image.created=${{ env.BUILD_DATE }}
+            org.opencontainers.image.description=Created from commit ${{ env.GIT_SHA }} and ref ${{ env.GIT_REF }}
+            org.opencontainers.image.ref.name=${{ env.GIT_REF }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.version=${{ env.BUILD_VER }}
+            # tags: mmansoornano/udacity-techtrends:latest
           tags: | 
             ${{ env.IMAGE }}:latest
             ${{ env.IMAGE }}:${{ env.GIT_REF }}
             ${{ env.IMAGE }}:${{ env.GIT_SHA }}
             ${{ env.IMAGE }}:${{ env.BUILD_VER }}
-          
+          load: true
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+      - run: docker push ${{ env.IMAGE }}:latest
           #${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          # labels: ${{ steps.meta.outputs.labels }}

@@ -89,7 +89,7 @@ def create():
         content = request.form['content']
 
         if not title:
-            flash('Title is required!')
+            flash('Title is required!!')
         else:
             connection = get_db_connection()
             connection.execute('INSERT INTO posts (title, content) VALUES (?, ?)',

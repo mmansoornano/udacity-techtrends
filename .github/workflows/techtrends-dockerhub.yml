@@ -19,8 +19,8 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            name/app
-            ghcr.io/username/app
+            mmansoornano/udacity-techtrends
+            ghcr.io/mmansoornano/udacity-techtrends
           # generate Docker tags based on the following events/attributes
           tags: |
             type=schedule
@@ -51,6 +51,6 @@ jobs:
           file: ./project/techtrends/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: mmansoornano/udacity-techtrends:${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           #tags: mmansoornano/udacity-techtrends:latest

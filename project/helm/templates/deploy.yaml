@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: techtrends
+    app: {{ .Values.app.name }}
     tag: latest
-  name: techtrends
+  name: {{ .Values.app.name }}
   namespace: {{ .Values.namespace.name }}
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -18,12 +18,12 @@ spec:
   template:
     metadata:
       labels:
-        app: techtrends
+        app: {{ .Values.app.name }}
     spec:
       containers:
       - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: techtrends
+        name: {{ .Values.app.name }}
         ports:
         - containerPort: {{ .Values.containerPort }}
         livenessProbe:

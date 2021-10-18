@@ -30,3 +30,35 @@ INFO:werkzeug:127.0.0.1 - - [17/Oct/2021 17:21:32] "[37mGET /about HTTP/1.1[0m
 INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
 INFO:app:10/17/2021, 17:22:37, The "About Us" page is retrieved.
 INFO:werkzeug:127.0.0.1 - - [17/Oct/2021 17:22:37] "[37mGET /about HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:app:10/18/2021, 01:30:46, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:30:46] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 01:30:49, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:30:49] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 01:30:49, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:30:49] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 01:30:50, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:30:50] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 01:30:51, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:30:51] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 01:30:51, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:30:51] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 01:30:51, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:30:51] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 01:30:52, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:30:52] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:app:10/18/2021, 01:33:12, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:33:12] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 01:33:14, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:33:14] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 01:33:14, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:33:14] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 01:33:15, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:33:15] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 01:33:15, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:33:15] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 01:33:15, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:33:15] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:10/18/2021, 01:33:16, Accesing metrics
+INFO:werkzeug:127.0.0.1 - - [18/Oct/2021 01:33:16] "[37mGET /metrics HTTP/1.1[0m" 200 -
